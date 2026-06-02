@@ -1,4 +1,4 @@
-function modInverse(a: number, m: number) {
+const modInverse = (a: number, m: number) => {
   let m0 = m;
   let y = 0,
     x = 1;
@@ -21,15 +21,15 @@ function modInverse(a: number, m: number) {
   }
 
   return x;
-}
+};
 
 const gcd = (a: number, b: number): number => {
   return b === 0 ? a : gcd(b, a % b);
 };
 
-function mod(a: number, MOD: number = 26) {
+const mod = (a: number, MOD: number = 26) => {
   return ((a % MOD) + MOD) % MOD;
-}
+};
 
 export const decrypt = () => {
   const key = [
