@@ -1,6 +1,8 @@
 import { useState } from "react";
 import KeyInputNumber from "./KeyInput.Number";
 import { Alert, Button } from "@heroui/react";
+import { checkKey } from "../actions/checkKey";
+import { Lock, SquarePen } from "lucide-react";
 
 const KeyInput = () => {
   const [input1, setInput1] = useState<number | null>(null);
@@ -13,19 +15,33 @@ const KeyInput = () => {
   const [input8, setInput8] = useState<number | null>(null);
   const [input9, setInput9] = useState<number | null>(null);
 
-  const [isValid, setIsValid] = useState<boolean | null>(null);
+  const [isValid, setIsValid] = useState<boolean>(false);
   const [statusText, setStatusText] = useState<string>(
     "Kunci belum divalidasi",
   );
 
+  const [editable, setEditable] = useState(true);
+  const resetStatus = () => {
+    setIsValid(false);
+    setStatusText("Kunci belum divalidasi");
+    setEditable(true);
+  };
+
   const submitKey = () => {
-    setIsValid(true);
-    setStatusText("Kunci telah valid!");
-    console.log("Submitted key:", [
-      [input1, input2, input3],
-      [input4, input5, input6],
-      [input7, input8, input9],
+    const status = checkKey([
+      [input1 ?? 0, input2 ?? 0, input3 ?? 0],
+      [input4 ?? 0, input5 ?? 0, input6 ?? 0],
+      [input7 ?? 0, input8 ?? 0, input9 ?? 0],
     ]);
+
+    if (status.success) {
+      setIsValid(true);
+      setStatusText(status.message);
+      setEditable(false);
+    } else {
+      setIsValid(false);
+      setStatusText(status.message);
+    }
   };
 
   return (
@@ -38,36 +54,44 @@ const KeyInput = () => {
       </Alert>
       <div className="grid grid-cols-3 gap-2">
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput1} />
+          <KeyInputNumber storeVar={setInput1} lockStatus={editable} />
         </div>
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput2} />
+          <KeyInputNumber storeVar={setInput2} lockStatus={editable} />
         </div>
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput3} />
+          <KeyInputNumber storeVar={setInput3} lockStatus={editable} />
         </div>
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput4} />
+          <KeyInputNumber storeVar={setInput4} lockStatus={editable} />
         </div>
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput5} />
+          <KeyInputNumber storeVar={setInput5} lockStatus={editable} />
         </div>
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput6} />
+          <KeyInputNumber storeVar={setInput6} lockStatus={editable} />
         </div>
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput7} />
+          <KeyInputNumber storeVar={setInput7} lockStatus={editable} />
         </div>
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput8} />
+          <KeyInputNumber storeVar={setInput8} lockStatus={editable} />
         </div>
         <div className="flex-1 flex justify-center">
-          <KeyInputNumber storeVar={setInput9} />
+          <KeyInputNumber storeVar={setInput9} lockStatus={editable} />
         </div>
       </div>
-      <Button className="mt-4 w-full" onClick={submitKey}>
-        Validasi Kunci
-      </Button>
+      {editable ? (
+        <Button className="mt-4 w-full" onClick={submitKey}>
+          <Lock />
+          Validasi Kunci
+        </Button>
+      ) : (
+        <Button className="mt-4 w-full" onClick={resetStatus} variant="outline">
+          <SquarePen />
+          Edit Kunci
+        </Button>
+      )}
     </div>
   );
 };

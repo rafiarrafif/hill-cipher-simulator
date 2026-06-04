@@ -1,3 +1,4 @@
+import { callback } from "../helpers/callback";
 import { gcd } from "../helpers/gcd";
 import { mod } from "../helpers/mod";
 
@@ -8,5 +9,8 @@ export const checkKey = (key: number[][]) => {
   );
 
   if (gcd(determinantKey, 26) !== 1)
-    return console.log("Key tidak valid, tidak memiliki invers modulo 26");
+    return callback(false, "Key tidak valid, tidak memiliki invers modulo 26");
+
+  return callback(true, "Key valid!");
+  7;
 };
