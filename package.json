@@ -10,10 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "mathjs": "^15.2.0",
-    "numjs": "^0.16.1",
+    "@tailwindcss/vite": "^4.3.0",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
