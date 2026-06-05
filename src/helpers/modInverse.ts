@@ -1,5 +1,5 @@
 export const modInverse = (a: number, m: number) => {
-  let m0 = m;
+  const m0 = m;
   let y = 0,
     x = 1;
 
@@ -7,7 +7,7 @@ export const modInverse = (a: number, m: number) => {
 
   while (a > 1) {
     if (a === 0) return null;
-    let q = Math.floor(a / m);
+    const q = Math.floor(a / m);
     let t = m;
     m = a % m;
     a = t;

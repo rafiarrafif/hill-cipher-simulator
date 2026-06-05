@@ -11,9 +11,9 @@ const ValueInputEncrypt = ({ keyValue }: { keyValue: number[][] }) => {
     if (!plainText) return;
     const encrypted = encrypt(plainText, keyValue);
 
-    encrypted.success
-      ? setEncryptedText(encrypted.message)
-      : setEncryptedText(`Error: ${encrypted.message}`);
+    setEncryptedText(
+      encrypted.success ? encrypted.message : `Error: ${encrypted.message}`,
+    );
   };
 
   return (
