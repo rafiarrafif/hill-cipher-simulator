@@ -2,6 +2,7 @@ import { gcd } from "./gcd";
 import { mod } from "./mod";
 import { modInverse } from "./modInverse";
 import { char, modValue } from "../../configs";
+import { callback } from "./callback";
 
 export const decrypt = (cipherText: string, key: number[][]) => {
   const [[a, b, c], [d, e, f], [g, h, i]] = key;
@@ -20,11 +21,10 @@ export const decrypt = (cipherText: string, key: number[][]) => {
   );
 
   if (gcd(determinantKey, modValue) !== 1)
-    return console.log(
-      `Key tidak valid, tidak memiliki invers modulo ${modValue}`,
-    );
+    return callback(false, "Key tidak valid, tidak memiliki invers modulo 71");
 
-  const cipherTextInNumber = cipherText
+  const [cipherTextLength, cipherTextCore] = cipherText.split(":");
+  const cipherTextInNumber = cipherTextCore
     .split("")
     .map((c) => char.indexOf(c))
     .filter((num) => num !== -1);
@@ -47,6 +47,9 @@ export const decrypt = (cipherText: string, key: number[][]) => {
     pAll.push(p1, p2, p3);
   }
 
-  const decryptedString = pAll.map((num) => char[num]).join("");
-  return decryptedString;
+  const decryptedString = pAll
+    .map((num) => char[num])
+    .join("")
+    .slice(0, Number(cipherTextLength));
+  return callback(true, decryptedString);
 };

@@ -1,9 +1,20 @@
 import { Button, Input, Label } from "@heroui/react";
 import { KeyRound } from "lucide-react";
 import React from "react";
+import { decrypt } from "../helpers/decrypt";
 
-const ValueInputDecrypt = () => {
+const ValueInputDecrypt = ({ keyValue }: { keyValue: number[][] }) => {
+  const [encryptedText, setEncryptedText] = React.useState<string | null>(null);
   const [decryptedText, setDecryptedText] = React.useState<string>("");
+
+  const startDecrypt = () => {
+    if (!encryptedText) return;
+    const decrypted = decrypt(encryptedText, keyValue);
+
+    decrypted.success
+      ? setDecryptedText(decrypted.message)
+      : setDecryptedText(`Error: ${decrypted.message}`);
+  };
 
   return (
     <div>
@@ -11,6 +22,7 @@ const ValueInputDecrypt = () => {
         <Label htmlFor="cipher-text">Cipher Text</Label>
         <Input
           id="cipher-text"
+          onChange={(val) => setEncryptedText(val.target.value)}
           min={0}
           placeholder="Masukan teks yang ingin didekripsi"
           className="border border-neutral-200"
@@ -18,7 +30,7 @@ const ValueInputDecrypt = () => {
           variant="primary"
         />
       </div>
-      <Button className="w-full mt-2">
+      <Button className="w-full mt-2" onClick={startDecrypt}>
         <KeyRound />
         Decrypt
       </Button>

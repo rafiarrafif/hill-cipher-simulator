@@ -22,7 +22,7 @@ const ValueInput = ({ keyValue }: { keyValue: number[][] }) => {
           <p>Encrypt your data with our secure encryption methods.</p>
         </Tabs.Panel>
         <Tabs.Panel className="pt-2" id="decrypt">
-          <ValueInputDecrypt />
+          <ValueInputDecrypt keyValue={keyValue} />
         </Tabs.Panel>
       </Tabs>
     </div>

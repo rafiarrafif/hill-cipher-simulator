@@ -19,7 +19,7 @@ export const encrypt = () => {
   if (gcd(determinantKey, 71) !== 1)
     return console.log("Key tidak valid, tidak memiliki invers modulo 71");
 
-  const plainText = "HIDUP JOKOWI!";
+  const plainText = "HIDUP BU ESTI!";
   const char =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890.,!?-_()";
   const plainTextInNumber = plainText
