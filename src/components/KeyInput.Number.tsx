@@ -5,15 +5,18 @@ import React from "react";
 const KeyInputNumber = ({
   storeVar,
   lockStatus,
+  value = 0,
 }: {
   storeVar: React.Dispatch<React.SetStateAction<number | null>>;
   lockStatus: boolean;
+  value: number | null;
 }) => {
   return (
     <NumberField
       className="w-full"
       isReadOnly={!lockStatus}
       minValue={0}
+      value={value!}
       onChange={(value) => storeVar(value ?? null)}
       aria-label="key-input"
       aria-labelledby="key-input"

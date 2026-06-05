@@ -36,7 +36,9 @@ const ValueInputDecrypt = ({ keyValue }: { keyValue: number[][] }) => {
       </Button>
       <div className="border border-neutral-200 rounded-xl px-2 py-1 mt-8">
         {decryptedText ? (
-          <p className="text-base text-neutral-700">{decryptedText}</p>
+          <p className="text-base text-neutral-700 break-all">
+            {decryptedText}
+          </p>
         ) : (
           <p className="text-sm text-neutral-400">
             Teks yang didekripsi akan muncul di sini

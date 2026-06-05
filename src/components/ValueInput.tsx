@@ -1,5 +1,6 @@
 import { Tabs } from "@heroui/react";
 import ValueInputDecrypt from "./ValueInput.Decrypt";
+import ValueInputEncrypt from "./ValueInput.Encrypt";
 
 const ValueInput = ({ keyValue }: { keyValue: number[][] }) => {
   return (
@@ -18,8 +19,7 @@ const ValueInput = ({ keyValue }: { keyValue: number[][] }) => {
           </Tabs.List>
         </Tabs.ListContainer>
         <Tabs.Panel className="pt-2" id="encrypt">
-          <p>Key: {keyValue}</p>
-          <p>Encrypt your data with our secure encryption methods.</p>
+          <ValueInputEncrypt keyValue={keyValue} />
         </Tabs.Panel>
         <Tabs.Panel className="pt-2" id="decrypt">
           <ValueInputDecrypt keyValue={keyValue} />
