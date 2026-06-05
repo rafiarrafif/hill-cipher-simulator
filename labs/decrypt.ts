@@ -27,7 +27,7 @@ const gcd = (a: number, b: number): number => {
   return b === 0 ? a : gcd(b, a % b);
 };
 
-const mod = (a: number, MOD: number = 26) => {
+const mod = (a: number, MOD: number = 71) => {
   return ((a % MOD) + MOD) % MOD;
 };
 
@@ -47,16 +47,17 @@ export const decrypt = () => {
     [d * h - e * g, b * g - a * h, a * e - b * d],
   ];
   const adjoinKeyMod = adjointKey.map((row) => row.map((col) => mod(col)));
-  const determinantKeyInverse = modInverse(determinantKey, 26);
+  const determinantKeyInverse = modInverse(determinantKey, 71);
   const keyInverse = adjoinKeyMod.map((row) =>
     row.map((col) => mod(col * determinantKeyInverse!)),
   );
 
-  if (gcd(determinantKey, 26) !== 1)
-    return console.log("Key tidak valid, tidak memiliki invers modulo 26");
+  if (gcd(determinantKey, 71) !== 1)
+    return console.log("Key tidak valid, tidak memiliki invers modulo 71");
 
-  const cipherText = "FQKIVQKOMCUE";
-  const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const cipherText = "s)eYaa,6pQ9.";
+  const char =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890.,!?-_()";
   const cipherTextInNumber = cipherText
     .split("")
     .map((c) => char.indexOf(c))

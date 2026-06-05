@@ -3,7 +3,7 @@ export const encrypt = () => {
     return b === 0 ? a : gcd(b, a % b);
   };
 
-  const mod = (a: number, MOD: number = 26) => {
+  const mod = (a: number, MOD: number = 71) => {
     return ((a % MOD) + MOD) % MOD;
   };
 
@@ -16,11 +16,12 @@ export const encrypt = () => {
   const determinantKey = mod(
     a * (e * i - f * h) - b * (d * i - f * g) + c * (d * h - e * g),
   );
-  if (gcd(determinantKey, 26) !== 1)
-    return console.log("Key tidak valid, tidak memiliki invers modulo 26");
+  if (gcd(determinantKey, 71) !== 1)
+    return console.log("Key tidak valid, tidak memiliki invers modulo 71");
 
-  const plainText = "HIDUPJOKOWII";
-  const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const plainText = "HIDUPJOKOWIS";
+  const char =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890.,!?-_()";
   const plainTextInNumber = plainText
     .split("")
     .map((c) => char.indexOf(c))
