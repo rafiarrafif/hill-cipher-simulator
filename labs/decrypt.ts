@@ -55,10 +55,11 @@ export const decrypt = () => {
   if (gcd(determinantKey, 71) !== 1)
     return console.log("Key tidak valid, tidak memiliki invers modulo 71");
 
-  const cipherText = "s)eYaa,6pQ9.";
+  const cipherText = "13:s)elc?bMXYG7Q1G";
   const char =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890.,!?-_()";
-  const cipherTextInNumber = cipherText
+  const [cipherTextLength, cipherTextCore] = cipherText.split(":");
+  const cipherTextInNumber = cipherTextCore
     .split("")
     .map((c) => char.indexOf(c))
     .filter((num) => num !== -1);
@@ -81,7 +82,10 @@ export const decrypt = () => {
     pAll.push(p1, p2, p3);
   }
 
-  const decryptedString = pAll.map((num) => char[num]).join("");
+  const decryptedString = pAll
+    .map((num) => char[num])
+    .join("")
+    .slice(0, Number(cipherTextLength));
   console.log("Decrypted String:", decryptedString);
   return decryptedString;
 };

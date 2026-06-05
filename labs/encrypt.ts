@@ -19,7 +19,7 @@ export const encrypt = () => {
   if (gcd(determinantKey, 71) !== 1)
     return console.log("Key tidak valid, tidak memiliki invers modulo 71");
 
-  const plainText = "HIDUPJOKOWIS";
+  const plainText = "HIDUP JOKOWI!";
   const char =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890.,!?-_()";
   const plainTextInNumber = plainText
@@ -28,10 +28,12 @@ export const encrypt = () => {
     .filter((num) => num !== -1);
 
   const cAll = [];
+  const randomFiller = Math.floor(Math.random() * 71);
   for (let iterate = 0; iterate < plainTextInNumber.length; iterate += 3) {
-    const p1 = plainTextInNumber[iterate];
-    const p2 = plainTextInNumber[iterate + 1];
-    const p3 = plainTextInNumber[iterate + 2];
+    const [p1, p2 = randomFiller, p3 = randomFiller] = plainTextInNumber.slice(
+      iterate,
+      iterate + 3,
+    );
 
     const c1 = mod(a * p1 + b * p2 + c * p3);
     const c2 = mod(d * p1 + e * p2 + f * p3);
@@ -39,7 +41,8 @@ export const encrypt = () => {
     cAll.push(c1, c2, c3);
   }
 
-  const encryptedString = cAll.map((num) => char[num]).join("");
+  const originLength = plainTextInNumber.length;
+  const encryptedString = `${originLength}:${cAll.map((num) => char[num]).join("")}`;
   console.log("Encrypted String:", encryptedString);
   return encryptedString;
 };
