@@ -6,8 +6,10 @@ import { Lock, SquarePen } from "lucide-react";
 
 const KeyInput = ({
   setKeyValue,
+  setIsAllowedToFillInput,
 }: {
   setKeyValue: React.Dispatch<React.SetStateAction<number[][]>>;
+  setIsAllowedToFillInput: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [input1, setInput1] = useState<number | null>(null);
   const [input2, setInput2] = useState<number | null>(null);
@@ -29,6 +31,7 @@ const KeyInput = ({
     setIsValid(false);
     setStatusText("Kunci belum divalidasi");
     setEditable(true);
+    setIsAllowedToFillInput(false);
   };
 
   const submitKey = () => {
@@ -42,12 +45,14 @@ const KeyInput = ({
       setIsValid(true);
       setStatusText(status.message);
       setEditable(false);
+      setIsAllowedToFillInput(true);
       setKeyValue([
         [input1 ?? 0, input2 ?? 0, input3 ?? 0],
         [input4 ?? 0, input5 ?? 0, input6 ?? 0],
         [input7 ?? 0, input8 ?? 0, input9 ?? 0],
       ]);
     } else {
+      setIsAllowedToFillInput(false);
       setIsValid(false);
       setStatusText(status.message);
     }

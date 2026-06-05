@@ -16,5 +16,4 @@ export const checkKey = (key: number[][]) => {
     );
 
   return callback(true, "Key valid!");
-  7;
 };
