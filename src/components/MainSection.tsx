@@ -15,11 +15,13 @@ const MainSection = () => {
         setKeyValue={setKeyValue}
         setIsAllowedToFillInput={setIsAllowedToFillInput}
       />
-      {isAllowedToFillInput ? (
-        <ValueInput keyValue={keyValue} />
-      ) : (
-        <ValueInputDisable />
-      )}
+      <div className="w-full h-fit border border-neutral-200 rounded-xl px-2 py-2 mt-4">
+        {isAllowedToFillInput ? (
+          <ValueInput keyValue={keyValue} />
+        ) : (
+          <ValueInputDisable />
+        )}
+      </div>
     </div>
   );
 };
