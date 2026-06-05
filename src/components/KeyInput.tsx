@@ -4,7 +4,11 @@ import { Alert, Button } from "@heroui/react";
 import { checkKey } from "../actions/checkKey";
 import { Lock, SquarePen } from "lucide-react";
 
-const KeyInput = () => {
+const KeyInput = ({
+  setKeyValue,
+}: {
+  setKeyValue: React.Dispatch<React.SetStateAction<number[][]>>;
+}) => {
   const [input1, setInput1] = useState<number | null>(null);
   const [input2, setInput2] = useState<number | null>(null);
   const [input3, setInput3] = useState<number | null>(null);
@@ -38,6 +42,11 @@ const KeyInput = () => {
       setIsValid(true);
       setStatusText(status.message);
       setEditable(false);
+      setKeyValue([
+        [input1 ?? 0, input2 ?? 0, input3 ?? 0],
+        [input4 ?? 0, input5 ?? 0, input6 ?? 0],
+        [input7 ?? 0, input8 ?? 0, input9 ?? 0],
+      ]);
     } else {
       setIsValid(false);
       setStatusText(status.message);
