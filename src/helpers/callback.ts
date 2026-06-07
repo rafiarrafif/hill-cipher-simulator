@@ -1,6 +1,12 @@
-export const callback = (success: boolean, message: string) => {
+export const callback = (
+  success: boolean,
+  data: {
+    result: string;
+    process?: any[];
+  },
+) => {
   return {
     success,
-    message,
+    data,
   };
 };

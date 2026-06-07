@@ -10,10 +10,11 @@ export const checkKey = (key: number[][]) => {
   );
 
   if (gcd(determinantKey, modValue) !== 1)
-    return callback(
-      false,
-      `Key tidak valid, tidak memiliki invers modulo ${modValue}`,
-    );
+    return callback(false, {
+      result: "Key tidak valid, tidak memiliki invers modulo 71",
+    });
 
-  return callback(true, "Key valid!");
+  return callback(true, {
+    result: "Kunci valid, dapat digunakan untuk enkripsi dan dekripsi",
+  });
 };

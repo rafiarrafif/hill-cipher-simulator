@@ -43,7 +43,7 @@ const KeyInput = ({
 
     if (status.success) {
       setIsValid(true);
-      setStatusText(status.message);
+      setStatusText(status.data.result);
       setEditable(false);
       setIsAllowedToFillInput(true);
       setKeyValue([
@@ -54,7 +54,7 @@ const KeyInput = ({
     } else {
       setIsAllowedToFillInput(false);
       setIsValid(false);
-      setStatusText(status.message);
+      setStatusText(status.data.result);
     }
   };
 

@@ -12,7 +12,9 @@ const ValueInputDecrypt = ({ keyValue }: { keyValue: number[][] }) => {
     const decrypted = decrypt(encryptedText, keyValue);
 
     setDecryptedText(
-      decrypted.success ? decrypted.message : `Error: ${decrypted.message}`,
+      decrypted.success
+        ? decrypted.data.result
+        : `Error: ${decrypted.data.result}`,
     );
   };
 
