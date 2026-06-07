@@ -26,7 +26,7 @@ const ValueInputEncrypt = ({ keyValue }: { keyValue: number[][] }) => {
         ? encrypted.data.result
         : `Error: ${encrypted.data.result}`,
     );
-    setProcess(encrypted.data.process || []);
+    setProcess(encrypted.data.process || null);
   };
 
   return (

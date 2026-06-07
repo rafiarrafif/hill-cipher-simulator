@@ -2,7 +2,7 @@ export const callback = (
   success: boolean,
   data: {
     result: string;
-    process?: any[];
+    process?: any;
   },
 ) => {
   return {

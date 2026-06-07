@@ -10,7 +10,7 @@ const MainSection = () => {
   const [isAllowedToFillInput, setIsAllowedToFillInput] = React.useState(false);
 
   return (
-    <div className="my-4 mx-2">
+    <div className="my-4 mx-2 pb-6">
       <KeyInput
         setKeyValue={setKeyValue}
         setIsAllowedToFillInput={setIsAllowedToFillInput}
