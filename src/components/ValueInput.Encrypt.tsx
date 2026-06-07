@@ -1,5 +1,5 @@
 import { Button, Input, Label } from "@heroui/react";
-import { Lock } from "lucide-react";
+import { Copy, Lock } from "lucide-react";
 import { encrypt } from "../helpers/encrypt";
 import React from "react";
 
@@ -19,9 +19,9 @@ const ValueInputEncrypt = ({ keyValue }: { keyValue: number[][] }) => {
   return (
     <div>
       <div className="flex flex-col gap-1">
-        <Label htmlFor="cipher-text">Plain Text</Label>
+        <Label htmlFor="plain-text">Plain Text</Label>
         <Input
-          id="cipher-text"
+          id="plain-text"
           onChange={(val) => setPlainText(val.target.value)}
           min={0}
           placeholder="Masukan teks yang ingin dienkripsi"
@@ -34,16 +34,21 @@ const ValueInputEncrypt = ({ keyValue }: { keyValue: number[][] }) => {
         <Lock />
         Encrypt
       </Button>
-      <div className="border border-neutral-200 rounded-xl px-2 py-1 mt-8">
-        {encryptedText ? (
-          <p className="text-base text-neutral-700 break-all">
-            {encryptedText}
-          </p>
-        ) : (
-          <p className="text-sm text-neutral-400">
-            Teks yang dienkripsi akan muncul di sini
-          </p>
-        )}
+      <div className="border border-neutral-200 rounded-xl px-4 py-2 mt-8">
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-neutral-500 font-medium">
+            HASIL ENKRIPSI
+          </span>
+          <div
+            className="p-2 text-neutral-800 hover:bg-neutral-200 rounded-full cursor-pointer"
+            onClick={() => navigator.clipboard.writeText(encryptedText)}
+          >
+            <Copy size={14} />
+          </div>
+        </div>
+        <p className="text-base text-neutral-700 break-all mt-1">
+          {encryptedText}
+        </p>
       </div>
     </div>
   );

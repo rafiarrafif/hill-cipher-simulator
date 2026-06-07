@@ -1,5 +1,5 @@
 import { Button, Input, Label } from "@heroui/react";
-import { KeyRound } from "lucide-react";
+import { Copy, KeyRound } from "lucide-react";
 import React from "react";
 import { decrypt } from "../helpers/decrypt";
 
@@ -34,16 +34,21 @@ const ValueInputDecrypt = ({ keyValue }: { keyValue: number[][] }) => {
         <KeyRound />
         Decrypt
       </Button>
-      <div className="border border-neutral-200 rounded-xl px-2 py-1 mt-8">
-        {decryptedText ? (
-          <p className="text-base text-neutral-700 break-all">
-            {decryptedText}
-          </p>
-        ) : (
-          <p className="text-sm text-neutral-400">
-            Teks yang didekripsi akan muncul di sini
-          </p>
-        )}
+      <div className="border border-neutral-200 rounded-xl px-4 py-2 mt-8">
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-neutral-500 font-medium">
+            HASIL ENKRIPSI
+          </span>
+          <div
+            className="p-2 text-neutral-800 hover:bg-neutral-200 rounded-full cursor-pointer"
+            onClick={() => navigator.clipboard.writeText(decryptedText)}
+          >
+            <Copy size={14} />
+          </div>
+        </div>
+        <p className="text-base text-neutral-700 break-all mt-1">
+          {decryptedText}
+        </p>
       </div>
     </div>
   );

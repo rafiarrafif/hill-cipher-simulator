@@ -18,7 +18,7 @@ export const encrypt = (plainText: string, key: number[][]) => {
     .filter((num) => num !== -1);
 
   const cAll = [];
-  const randomFiller = Math.floor(Math.random() * 71);
+  const randomFiller = Math.floor(Math.random() * 10);
   for (let iterate = 0; iterate < plainTextInNumber.length; iterate += 3) {
     const [p1, p2 = randomFiller, p3 = randomFiller] = plainTextInNumber.slice(
       iterate,
