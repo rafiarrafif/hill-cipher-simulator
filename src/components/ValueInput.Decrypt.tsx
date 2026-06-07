@@ -53,7 +53,7 @@ const ValueInputDecrypt = ({ keyValue }: { keyValue: number[][] }) => {
       <div className="border border-neutral-200 rounded-xl px-4 py-2 mt-8">
         <div className="flex justify-between items-center">
           <span className="text-xs text-neutral-500 font-medium">
-            HASIL ENKRIPSI
+            HASIL DEKRIPSI
           </span>
           <div
             className="p-2 text-neutral-800 hover:bg-neutral-200 rounded-full cursor-pointer"
@@ -69,7 +69,7 @@ const ValueInputDecrypt = ({ keyValue }: { keyValue: number[][] }) => {
       {process?.blocks && (
         <div className="pt-6 px-2">
           <h1 className="text-neutral-500 text-lg font-semibold">
-            Proses Enkripsi
+            Proses Dekripsi
           </h1>
           <Separator className="mt-1" />
           <div className="flex flex-col gap-2 mt-4">
