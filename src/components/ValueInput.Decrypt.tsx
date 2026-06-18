@@ -114,10 +114,10 @@ const ValueInputDecrypt = ({ keyValue }: { keyValue: number[][] }) => {
                   </Card.Title>
                   <Card.Description className="text-neutral-900 flex flex-col gap-1">
                     <div>
-                      Plaintext Chunk: {JSON.stringify(log.cipherBlock)}
+                      Ciphertext Chunk: {JSON.stringify(log.cipherBlock)}
                     </div>
                     <div>
-                      Plaintext Chunk (Number):{" "}
+                      Ciphertext Chunk (Number):{" "}
                       {JSON.stringify(log.cipherBlockInNumber)}
                     </div>
                     <div>
