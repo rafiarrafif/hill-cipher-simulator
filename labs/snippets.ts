@@ -77,7 +77,7 @@ export const decrypt = () => {
   if (gcd(determinantKey, 71) !== 1)
     return console.log("Key tidak valid, tidak memiliki invers modulo 71");
 
-  const cipherText = "13:s)elc?bMXYG7Q1G";
+  const cipherText = "10:wkpn?_?YHK7Z";
   const char =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890.,!?-_()";
   const [cipherTextLength, cipherTextCore] = cipherText.split(":");
@@ -134,7 +134,7 @@ export const encrypt = () => {
   if (gcd(determinantKey, 71) !== 1)
     return console.log("Key tidak valid, tidak memiliki invers modulo 71");
 
-  const plainText = "HIDUP BU ESTI!";
+  const plainText = "Sains Data";
   const char =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890.,!?-_()";
   const plainTextInNumber = plainText

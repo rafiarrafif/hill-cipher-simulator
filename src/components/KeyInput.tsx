@@ -2,7 +2,7 @@ import { useState } from "react";
 import KeyInputNumber from "./KeyInput.Number";
 import { Alert, Button } from "@heroui/react";
 import { checkKey } from "../actions/checkKey";
-import { Lock, SquarePen } from "lucide-react";
+import { Dices, Lock, SquarePen } from "lucide-react";
 
 const KeyInput = ({
   setKeyValue,
@@ -58,18 +58,17 @@ const KeyInput = ({
     }
   };
 
-  const [isDefaultKeyUsed, setIsDefaultKeyUsed] = useState(false);
   const useDefaultKey = () => {
-    setInput1(12);
-    setInput2(11);
-    setInput3(5);
-    setInput4(21);
-    setInput5(18);
-    setInput6(21);
-    setInput7(21);
-    setInput8(5);
-    setInput9(19);
-    setIsDefaultKeyUsed(true);
+    resetStatus();
+    setInput1(Math.floor(Math.random() * 100));
+    setInput2(Math.floor(Math.random() * 100));
+    setInput3(Math.floor(Math.random() * 100));
+    setInput4(Math.floor(Math.random() * 100));
+    setInput5(Math.floor(Math.random() * 100));
+    setInput6(Math.floor(Math.random() * 100));
+    setInput7(Math.floor(Math.random() * 100));
+    setInput8(Math.floor(Math.random() * 100));
+    setInput9(Math.floor(Math.random() * 100));
   };
 
   return (
@@ -156,15 +155,14 @@ const KeyInput = ({
           Edit Kunci
         </Button>
       )}
-      {!isDefaultKeyUsed && (
-        <Button
-          className="mt-1 w-full text-neutral-600"
-          variant="ghost"
-          onClick={useDefaultKey}
-        >
-          Gunakan Kunci Default
-        </Button>
-      )}
+      <Button
+        className="mt-1 w-full text-neutral-600"
+        variant="ghost"
+        onClick={useDefaultKey}
+      >
+        <Dices />
+        Random Kunci
+      </Button>
     </div>
   );
 };
