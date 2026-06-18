@@ -1,28 +1,26 @@
 # Hill Cipher Simulator
 
-Another fucking matrix encryption toy. Because my linear algebra professor demanded a "final project."
-
-This is a half-assed but working Hill Cipher implementation. Encrypt text, decrypt text, watch numbers do their thing. Nothing more, nothing less. Don't expect updates, maintenance, or me giving a shit after submission.
+A simple matrix-based encryption simulator built to demonstrate how the Hill Cipher works. Created as a final project for a Linear Algebra course.
 
 > Live Demo: [alin.arrafif.com](https://alin.arrafif.com)
 
-## What The Hell Is This
+## What Is This
 
-Hill Cipher is a polygraphic substitution cipher that uses matrix multiplication to encrypt plaintext. If you don't know what that means, maybe take a linear algebra class first.
+Hill Cipher is a classical polygraphic substitution cipher that uses matrix multiplication to encrypt plaintext.
 
-This project was built as a final assignment for a Linear Algebra course demonstrating how matrices actually get applied in the real world (cryptography, in this case). Don't expect this to be production-grade encryption software. It's not. Don't use it to secure your secrets.
+This project demonstrates how linear algebra concepts can be applied to cryptography through a simple web application. It is intended for educational purposes and is **not** designed for real-world security.
 
-### Key features:
+### Key Features
 
-- Encrypt plaintext using a key matrix
-- Decrypt ciphertext back to plaintext
-- Step-by-step process log so you can actually see what's happening under the hood
+* Encrypt plaintext using a key matrix
+* Decrypt ciphertext back to plaintext
+* Step-by-step process log to visualize each stage of the algorithm
 
 ## Requirements
 
-You need Bun. Not npm. Not yarn. Bun.
+This project uses **Bun** as its runtime and package manager.
 
-If you don't have it:
+If you don't have it installed:
 
 ```bash
 curl -fsSL https://bun.sh/install | bash
@@ -31,18 +29,18 @@ curl -fsSL https://bun.sh/install | bash
 ## Getting Started
 
 ```bash
-# Clone it
+# Clone the repository
 git clone https://github.com/rafiarrafif/hill-cipher-simulator.git
 cd hill-cipher-simulator
 
 # Install dependencies
 bun install
 
-# Run dev server
+# Start the development server
 bun run dev
 ```
 
-Open your browser. You know what to do.
+Open the application in your browser.
 
 ## Build
 
@@ -50,21 +48,21 @@ Open your browser. You know what to do.
 bun run build
 ```
 
-Output goes to `dist/`.
+The production build will be generated in the `dist/` directory.
 
 ## Tech Stack
 
-- TypeScript
-- Vite
-- React (UI)
-- Tailwind CSS (styling)
+* TypeScript
+* Vite
+* React
+* Tailwind CSS
 
 ## License
 
-MIT. Do whatever you want with it. Just don't blame me if something breaks.
+This project is licensed under the MIT License.
 
 ## Contributing
 
-This project is done. It fulfilled its academic purpose. That said, if you find a bug that genuinely bothers you, pull requests are open. No promises on response time.
+This project was created to fulfill an academic assignment and is not under active development. However, bug reports, suggestions, and pull requests are always welcome.
 
-> _Built for Linear Algebra Universitas Sebelas Maret · Not maintained beyond submission day._
+> *Built for the Linear Algebra course at Universitas Sebelas Maret.*
